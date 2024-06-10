@@ -29,10 +29,11 @@ class PostInstallCommand(install):
 		install.run(self)
 
 requires = [
-	'jinja2 >= 3.0',
+	'Jinja2 >= 3.0',
 	'natsort >= 6.0.0',
-	'pyyaml >= 5.1',
+	'PyYAML >= 5.1',
 	'rarfile >= 3.0',
+	'Requests >= 2.32'
 	'requests_toolbelt >= 0.9.1'
 ]
 
