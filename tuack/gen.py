@@ -186,6 +186,7 @@ def new_dir(folder, args = None):
 					continue
 				for f in os.listdir(pjoin(base.path, 'sample-' + folder, ff)):
 					sample_copy(pjoin(ff, f), pjoin(ff, f), path, 'sample-' + folder)
+			sample_copy('gen.py', 'gen.py', path, 'sample-problem')
 		if path != '.':
 			conf = base.load_json(path)
 			conf['name'] = path
