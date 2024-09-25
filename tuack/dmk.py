@@ -24,6 +24,7 @@ class Getter:
 		return self.arg1.get(key, self.arg2.get(key, None))
 
 def main(argv):
+	base.init()
 	skip = set()
 	flag = None
 	for arg in argv:
@@ -46,7 +47,6 @@ def main(argv):
 			flag = arg
 		else:
 			log.info(f"未知的传入信息{arg}。")
-	base.init()
 	import gen, platform
 	if 'init' not in skip:
 		if hasattr(gen, 'init'):
