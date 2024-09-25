@@ -84,6 +84,7 @@ def main(argv):
 		open('random_state', 'w').write(str(random.getstate()))
 	warnend_gen_gen = False
 	for folder in folders:
+		os.makedirs(folder, exist_ok=True)
 		for item in conf[fmap[folder]]:
 			for case in item['cases']:
 				log.info(f'数据类型{folder}，测试点{case}。')
@@ -103,7 +104,12 @@ def main(argv):
 					warnend_gen_gen = True
 				if std_exe:
 					t = time.perf_counter()
-					os.system(f'std.exe < {folder}/{case}.in > {folder}/{case}.ans')
+
+					if base.system == 'Windows':
+						os.system(f'std.exe < {folder}/{case}.in > {folder}/{case}.ans')
+					elif base.system == "Linux":
+						os.system(f'./std.exe < {folder}/{case}.in > {folder}/{case}.ans')
+
 					log.info(f"标程用时：{time.perf_counter() - t}")
 					ans = ' '.join([line.strip() for line in open(f'{folder}/{case}.ans')])
 					if len(ans) > 100: 
